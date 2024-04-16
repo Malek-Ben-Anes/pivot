@@ -1,11 +1,10 @@
 package io.pivot.repository;
 
-import io.pivot.entity.Budget;
-import io.pivot.entity.Compagny;
+import io.pivot.entity.CompagnyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompagnyRepository extends JpaRepository<Compagny, Long> {
+public interface CompagnyRepository extends JpaRepository<CompagnyEntity, Long> {
 
 }

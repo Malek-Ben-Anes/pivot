@@ -1,6 +1,5 @@
 package io.pivot.entity;
 
-import io.pivot.enums.PurchaseRequestStatus;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -13,12 +12,10 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Data
 @Entity
-public class Budget {
+public class BudgetEntity {
     @Id
     @GeneratedValue
     private Long id;
-
-    private PurchaseRequestStatus status;
 
     private Long companyId;
 
