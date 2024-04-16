@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @RequiredArgsConstructor
+@RestController
 public class PurchaseRequestController {
 
     private final PurchaseRequestService purchaseRequestService;
@@ -25,13 +26,13 @@ public class PurchaseRequestController {
         return ResponseEntity.ok(purchaseRequestService.findById(requestId));
     }
 
-    @PostMapping("/purchaseRequest/{requestId}")
+    @PostMapping("/purchaseRequest")
     public ResponseEntity<PurchaseRequest> createPurchaseRequest(
                                             @RequestBody PurchaseRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(purchaseRequestService.create(request));
     }
 
-    @PutMapping("/purchaseRequest/{requestId}")
+    @PatchMapping("/purchaseRequest/{requestId}")
     public ResponseEntity<PurchaseRequest> updatePurchaseRequestStatus(@PathVariable("requestId") Long requestId,
                                                      @RequestBody PurchaseRequest request) {
         return ResponseEntity.ok(purchaseRequestService.update(requestId, request));
