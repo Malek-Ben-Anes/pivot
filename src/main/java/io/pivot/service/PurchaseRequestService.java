@@ -2,7 +2,7 @@ package io.pivot.service;
 
 import io.pivot.enums.PurchaseRequestStatus;
 import io.pivot.exception.NotFoundException;
-import io.pivot.model.PurchaseRequest;
+import io.pivot.entity.PurchaseRequest;
 import io.pivot.repository.PurchaseRequestRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +29,6 @@ public class PurchaseRequestService {
         var existingRequest = purchaseRequestRepository.findById(purchaseId)
                 .orElseThrow(() -> new NotFoundException("request not found" + purchaseId));
 
-        checkRequest(purchaseId, request);
-
         existingRequest.setStatus(request.getStatus());
 
         if (request.getStatus() == PurchaseRequestStatus.APPROVED) {
@@ -40,21 +38,22 @@ public class PurchaseRequestService {
         return purchaseRequestRepository.save(existingRequest);
     }
 
-    public String checkRequest(Long requestId, PurchaseRequest request) {
-        int comparisonResult = request.getAmount().compareTo(BIG_AMOUNT_THRESHOLD);
-
-        if (comparisonResult > 0) {
-            alertService.sendAlert("Request with big amount " + requestId);
-            return "Alert message: ";
-        }
-        return "standard request";
-    }
-
     public PurchaseRequest create(PurchaseRequest request) {
         request.setId(null);
         request.setStatus(PurchaseRequestStatus.CREATED);
         request.setIssueDate(LocalDateTime.now());
+        checkRequest(request);
         return purchaseRequestRepository.save(request);
+    }
+
+    private String checkRequest(PurchaseRequest request) {
+        int comparisonResult = request.getAmount().compareTo(BIG_AMOUNT_THRESHOLD);
+
+        if (comparisonResult > 0) {
+            alertService.sendAlert("Request with big amount " + request.getAmount());
+            return "Alert message: ";
+        }
+        return "standard request";
     }
 
     public PurchaseRequest findById(Long requestId) {

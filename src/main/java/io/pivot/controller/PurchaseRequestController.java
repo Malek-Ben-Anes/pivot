@@ -1,6 +1,6 @@
 package io.pivot.controller;
 
-import io.pivot.model.PurchaseRequest;
+import io.pivot.entity.PurchaseRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import io.pivot.service.PurchaseRequestService;
 
 import java.util.List;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @RestController

@@ -1,4 +1,4 @@
-package io.pivot.model;
+package io.pivot.entity;
 
 import io.pivot.enums.PurchaseRequestStatus;
 import lombok.Data;
@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Data
 @Entity
-public class PurchaseRequest {
+public class Budget {
     @Id
     @GeneratedValue
     private Long id;
@@ -23,9 +22,10 @@ public class PurchaseRequest {
 
     private Long companyId;
 
-    private String description;
+    /**
+     * the amount that has already been spent from the budget
+     */
+    private BigDecimal currentExpenditure;
 
-    private BigDecimal amount;
-
-    private LocalDateTime issueDate;
+    private LocalDateTime lastUpdatedDate;
 }
