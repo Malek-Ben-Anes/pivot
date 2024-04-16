@@ -1,4 +1,4 @@
-package com.ricardo.ricardo.exception;
+package io.pivot.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;

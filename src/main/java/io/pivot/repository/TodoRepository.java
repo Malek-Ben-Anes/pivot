@@ -1,4 +1,4 @@
-package com.ricardo.ricardo.repository;
+package io.pivot.repository;
 
 import java.util.List;
 

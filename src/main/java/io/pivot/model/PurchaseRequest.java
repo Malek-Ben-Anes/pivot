@@ -1,16 +1,19 @@
 package io.pivot.model;
 
+import io.pivot.enums.PurchaseRequestStatus;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Set;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Data
-public class Article {
-    private final String name;
-    private final String type;
-    private final Long startPrice;
-
-    private Set<Bid> bids;
+public class PurchaseRequest {
+    private Long id;
+    private PurchaseRequestStatus status;
+    private Long companyId;
+    private String description;
+    private BigDecimal amount;
+    private LocalDateTime issueDate;
 }

@@ -1,4 +1,4 @@
-package com.ricardo.ricardo.exception;
+package io.pivot.exception;
 
 
 public class NotFoundException extends RuntimeException {

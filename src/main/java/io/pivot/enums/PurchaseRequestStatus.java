@@ -1,2 +1,7 @@
-package io.pivot.model;public class PurchaseRequestStatus {
+package io.pivot.enums;
+
+public enum PurchaseRequestStatus {
+    CREATED,
+    APPROVED,
+    DECLINED;
 }
